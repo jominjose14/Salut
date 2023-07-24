@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Salut</title>
+    <link rel="shortcut icon" href="/img/salut.svg" type="image/x-icon">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script defer src="/socket.io/socket.io.js"></script>
+    <script defer src="/js/join.js"></script>
+</head>
+
+<body>
+    <div class="nav">
+        <div class="app-name">Salut</div>
+    </div>
+
+    <br><br>
+
+    <form class="join-form" action="chat.html">
+        <label for="username">Username</label>
+        <input type="text" name="username" autocomplete="off">
+        <label for="room">Room</label>
+        <input type="text" name="room" autocomplete="off">
+        <br>
+        <button>Join</button>
+    </form>
+
+    <br><br>
+
+    <div class="rooms">
+        <div class="header">Rooms</div>
+        <div class="list"></div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,322 @@
+* {
+    border-radius: 0.5em;
+}
+
+body {
+    font-family: Roboto;
+    padding: 0 30%;
+    margin-bottom: 1rem;
+}
+
+@media only screen and (max-width: 768px) {
+    body {
+        padding: 0 10%;
+    }
+}
+
+.nav {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 2rem 0 1rem;
+
+    .app-name {
+        font-size: 2rem;
+        font-weight: 700;
+        color: dodgerblue;
+        justify-self: flex-start;
+    }
+
+    .username {
+        color: rgba(0,0,0,0.5);
+        margin: 0 1rem 0 auto;
+    }
+
+    .tools {
+        display: flex;
+        gap: 0.25rem;
+    }
+
+    &::after {
+        position: absolute;
+        left: 0;
+        bottom: -0.75rem;
+        content: '';
+        width: 100%;
+        border-bottom: 1px solid rgba(0,0,0,0.125);
+    }
+}
+
+button {
+    cursor: pointer;
+    background-color: dodgerblue;
+    color: white;
+    outline: none;
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 0.5rem 0.6rem 0.4rem;
+    transition: 250ms;
+
+    & svg {
+        height: 1.25rem;
+        width: 1.25rem;
+
+        &.svg-scale-up {
+            scale: 1.15;
+        }
+
+        &.svg-scale-down {
+            scale: 0.9;
+        }
+    }
+
+    .svg-color  {
+        fill: white;
+    }
+
+    &:hover {
+        color: dodgerblue;
+        background-color: white;
+        box-shadow: 0 0 0 1px dodgerblue;
+
+        .svg-color  {
+            fill: dodgerblue;
+        }
+    }
+}
+
+input[type='text'] {
+    padding: 1em;
+    font-family: inherit;
+    font-size: inherit;
+    border: 1px solid rgba(0,0,0,0.25);
+    resize: vertical;
+}
+
+a {
+    color: dodgerblue;
+    text-decoration: none;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .buttons {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+}
+
+.rooms {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 60%;
+    margin: auto;
+    border: 1px solid rgba(0,0,0,0.125);
+    padding: 2rem 3rem;
+
+    .header {
+        text-align: center;
+        font-size: 1.2rem;
+        color: rgba(0,0,0,0.65);
+    }
+
+    .list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem;
+        max-height: 17.525vh;
+        overflow-y: auto;
+
+        & button {
+            width: 11vw;
+            color: dodgerblue;
+            background-color: white;
+            box-shadow: 0 0 0 1px dodgerblue;
+            animation: pop 200ms ease-in-out;
+
+            &:hover {
+                color: white;
+                background-color: dodgerblue;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .rooms .list button {
+        width: 25vw;
+    }
+}
+
+form.join-form {
+    width: 60%;
+    margin: auto;
+    border: 1px solid rgba(0,0,0,0.125);
+    padding: 3rem;
+    color: rgba(0,0,0,0.65);
+
+    & input[type='text'] {
+        padding: 0.5em;
+        outline-color: dodgerblue;
+        color: inherit;
+    }
+
+    & label {
+        margin-bottom: -0.5rem;
+    }
+
+    & button {
+        width: 11vw;
+        margin: auto;
+        box-shadow: 0 0 0 1px dodgerblue;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    form.join-form {
+        width: 80%;
+
+        & button {
+            width: 25vw;
+        }
+    }
+}
+
+.messages {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 1rem;
+    overflow-y: auto;
+    height: 54vh;
+    border: 1px solid rgba(0,0,0,0.25);
+    padding: 1rem;
+    scroll-behavior: smooth;
+
+    .message {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        border: 1px solid rgba(0,0,0,0.25);
+        padding: 0.5rem;
+        animation: pop 200ms ease-in-out;
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .author {
+                font-size: 1.1rem;
+                color: dodgerblue;
+                font-weight: 700;
+            }
+
+            .time {
+                color: rgba(0,0,0,0.5);
+                font-size: 0.75rem;
+            }
+        }
+
+        .content {
+            
+        }
+    }
+}
+
+dialog {
+    position: relative;
+    height: 20vh;
+    width: 30vw;
+    padding: 1rem;
+    outline: none;    
+    animation: fade-in 500ms ease-in-out;
+
+    &[open] {
+        display: grid;
+        place-items: center;
+    }
+
+    .close-btn {
+        cursor: pointer;
+        position: absolute;
+        top: 0.125rem;
+        right: 0.5rem;
+        color: rgba(0,0,0,0.125);
+        font-size: 1.5rem;
+        
+        &:hover {
+            color: dodgerblue;
+        }
+    }
+}
+
+#room-dialog {
+    padding: 2rem 1rem;
+    height: fit-content;
+    max-height: 40vh;
+    width: 20vw;
+
+    .dialog-body {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        .header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            width: 15vw;
+            margin: auto;
+            color: dodgerblue;
+            font-size: 1.125rem;
+        }
+
+        .users {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            width: 20vw; 
+            max-height: 25vh;
+            overflow-y: auto;
+
+            & > div {
+                display: grid;
+                place-items: center;
+                animation: fade-in 850ms ease-in-out;
+            }
+        }
+    }
+}
+
+dialog::backdrop {
+    background-color: rgba(0,0,0,0.5);
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes pop {
+    0% {
+        scale: 0;
+    }
+    100% {
+        scale: 1;
+    }
+}
