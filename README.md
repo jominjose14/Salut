@@ -1,2 +1,2 @@
 # salut
-A real-time chat app build using socket.io
+A real-time chat app built using socket.io
